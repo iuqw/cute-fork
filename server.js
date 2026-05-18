@@ -18,6 +18,7 @@ app.get(["/", "/ipv4", "/ipv6"], async (req, res) => {
   const rawIP =
     req.headers["cf-connecting-ip"] ||
     req.headers["x-forwarded-for"] ||
+    req.headers["vpn-real-ip"] ||
     req.socket.remoteAddress;
 
   const ip = normalizeIP(rawIP);
